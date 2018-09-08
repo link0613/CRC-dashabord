@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if !IE]><!-->
+<html lang="en">
+<!--<![endif]-->
+<head>
+  <meta charset="utf-8" />
+  <title>Dashboard</title>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+  <meta content="" name="description" />
+  <meta content="" name="author" />
+  
+  <!-- ================== BEGIN BASE CSS STYLE ================== -->
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+  <link href="../../assets/plugins/jquery-ui/jquery-ui.min.css" rel="stylesheet" />
+  <link href="../../assets/plugins/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="../../assets/plugins/font-awesome/5.0/css/fontawesome-all.min.css" rel="stylesheet" />
+  <link href="../../assets/plugins/animate/animate.min.css" rel="stylesheet" />
+  <link href="../../assets/css/default/style.min.css" rel="stylesheet" />
+  <link href="../../assets/css/default/style-responsive.min.css" rel="stylesheet" />
+  <link href="../../assets/css/default/theme/default.css" rel="stylesheet" id="theme" />
+  <link href="../../assets/css/dashboard.css" rel="stylesheet"/>
+  <!-- ================== END BASE CSS STYLE ================== -->
+  
+  <!-- ================== BEGIN PAGE LEVEL CSS STYLE ================== -->
+    <link href="../../assets/plugins/jquery-jvectormap/jquery-jvectormap.css" rel="stylesheet" />
+    <link href="../../assets/plugins/bootstrap-calendar/css/bootstrap_calendar.css" rel="stylesheet" />
+    <link href="../../assets/plugins/gritter/css/jquery.gritter.css" rel="stylesheet" />
+    <link href="../../assets/plugins/nvd3/build/nv.d3.css" rel="stylesheet" />
+  <!-- ================== END PAGE LEVEL CSS STYLE ================== -->
+  
+  <!-- ================== BEGIN BASE JS ================== -->
+  <script src="../../assets/plugins/pace/pace.min.js"></script>
+  <!-- ================== END BASE JS ================== -->
+</head>
+<body>
+  <!-- begin #page-loader -->
+  <div id="page-loader" class="fade show"><span class="spinner"></span></div>
+  <!-- end #page-loader -->
+  
+  <!-- begin #page-container -->
+  <div id="page-container" class="fade page-sidebar-fixed page-header-fixed">
+    <!-- begin #header -->
+    <div id="header" class="header navbar-default">
+      <!-- begin navbar-header -->
+      <div class="navbar-header">
+        <a href="index.html" class="navbar-brand">
+          <img src="../../assets/img/dashboard/LOGOwr.png" alt="logo">
+        </a>
+        <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+      </div>
+      <!-- end navbar-header -->
+      
+      <!-- begin header-nav -->
+      <ul class="navbar-nav navbar-right">
+        <li class="navbar__search">
+          <form class="navbar-form">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search for..." />
+              <button type="submit" class="btn btn-search"><i class="fa fa-search"></i></button>
+            </div>
+          </form>
+        </li>
+        <li class="dropdown navbar-bell">
+          <a href="javascript:;" data-toggle="dropdown" class="dropdown-toggle f-s-14">
+            <i class="fa fa-bell"></i>
+            <span class="label">5</span>
+          </a>
+          <ul class="dropdown-menu media-list dropdown-menu-right"> 
+            <li class="dropdown-header">NOTIFICATIONS (5)</li>
+            <li class="media">
+              <a href="javascript:;">
+                <div class="media-left">
+                  <i class="fa fa-bug media-object bg-silver-darker"></i>
+                </div>
+                <div class="media-body">
+                  <h6 class="media-heading">Server Error Reports <i class="fa fa-exclamation-circle text-danger"></i></h6>
+                  <div class="text-muted f-s-11">3 minutes ago</div>
+                </div>
+              </a>
+            </li>
+            <li class="media">
+              <a href="javascript:;">
+                <div class="media-left">
+                  <img src="../../assets/img/user/user-1.jpg" class="media-object" alt="" />
+                  <i class="fab fa-facebook-messenger text-primary media-object-icon"></i>
+                </div>
+                <div class="media-body">
+                  <h6 class="media-heading">John Smith</h6>
+                  <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
+                  <div class="text-muted f-s-11">25 minutes ago</div>
+                </div>
+              </a>
+            </li>
+            <li class="media">
+              <a href="javascript:;">
+                <div class="media-left">
+                  <img src="../../assets/img/user/user-2.jpg" class="media-object" alt="" />
+                  <i class="fab fa-facebook-messenger text-primary media-object-icon"></i>
+                </div>
+                <div class="media-body">
+                  <h6 class="media-heading">Olivia</h6>
+                  <p>Quisque pulvinar tellus sit amet sem scelerisque tincidunt.</p>
+                  <div class="text-muted f-s-11">35 minutes ago</div>
+                </div>
+              </a>
+            </li>
+            <li class="media">
+              <a href="javascript:;">
+                <div class="media-left">
+                  <i class="fa fa-plus media-object bg-silver-darker"></i>
+                </div>
+                <div class="media-body">
+                  <h6 class="media-heading"> New User Registered</h6>
+                  <div class="text-muted f-s-11">1 hour ago</div>
+                </div>
+              </a>
+            </li>
+            <li class="media">
+              <a href="javascript:;">
+                <div class="media-left">
+                  <i class="fa fa-envelope media-object bg-silver-darker"></i>
+                  <i class="fab fa-google text-warning media-object-icon f-s-14"></i>
+                </div>
+                <div class="media-body">
+                  <h6 class="media-heading"> New Email From John</h6>
+                  <div class="text-muted f-s-11">2 hour ago</div>
+                </div>
+              </a>
+            </li>
+            <li class="dropdown-footer text-center">
+              <a href="javascript:;">View more</a>
+            </li>
+          </ul>
+        </li>
+        <li class="dropdown navbar-user">
+          <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown">
+            <div class="navbar-user__image">
+              <img src="../../assets/img/user/user-13.jpg" alt="" /> 
+              <div class="navbar-icon">
+                <img src="../../assets/img/dashboard/icon-settings.png" alt="icon">
+              </div>
+            </div>
+            <span class="d-none d-md-inline navbar-user__name">Konstantine Schwartz</span>
+          </a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a href="javascript:;" class="dropdown-item"><i class="fas fa-sliders-h"></i>Setting</a>
+            <div class="dropdown-divider"></div>
+            <a href="javascript:;" class="dropdown-item"><i class="fas fa-power-off"></i>Log Out</a>
+          </div>
+        </li>
+      </ul>
+      <!-- end header navigation right -->
+    </div>
+    <!-- end #header -->
+        
+    <!-- begin #content -->
+    <div id="content" class="content">
+      <!-- begin breadcrumb -->
+      <!-- <ol class="breadcrumb pull-right">
+        <li class="breadcrumb-item"><a href="javascript:;">Home</a></li>
+        <li class="breadcrumb-item"><a href="javascript:;">Dashboard</a></li>
+        <li class="breadcrumb-item active">Dashboard v2</li>
+      </ol> -->
+      <!-- end breadcrumb -->
+      <!-- begin page-header -->
+          <!-- begin #sidebar -->
+    <div id="sidebar" class="sidebar">
+      <!-- begin sidebar scrollbar -->
+      <div data-scrollbar="true" data-height="100%">
+        <!-- begin sidebar nav -->
+        <ul class="nav">
+          
+          <li class="active">
+            <a href="dashboard.html">
+              <i class="fa fa-th-large"></i>
+              <span>Main Dashboard</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="form.html">
+              <i class="fas fa-chart-line"></i>
+              <span>Upload your Data</span>
+            </a>
+          </li>
+
+          <li class="has-sub">
+            <a href="serendipity.html">
+                <b class="caret"></b>
+                <i class="fas fa-chart-pie"></i>
+                <span>Serendipity</span> 
+            </a>
+            <ul class="sub-menu">
+              <li><a href="#">Ovreview</a></li>
+              <li><a href="people.html">People</a></li>
+              <li><a href="#">Companies</a></li>
+              <li><a href="#">Tables</a></li>
+              <li class="has-sub">
+                <a href="javascript:;">
+                  <b class="caret"></b>
+                  <span>Parkour</span> 
+                </a>
+                <ul class="sub-menu">
+                  <li><a href="#">Ovreview</a></li>
+                  <li><a href="#">People</a></li>
+                  <li><a href="#">Companies</a></li>
+                  <li><a href="#">Calendar</a></li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="admin.html">
+              <i class="fas fa-user-cog"></i>
+              <span>Admin</span>
+            </a>
+          </li>
+
+          <li>
+            <a href="#">
+              <i class="fas fa-cog"></i>
+              <span>Settings</span>
+            </a>
+          </li>
+
+        </ul>
+        <!-- end sidebar nav -->
+      </div>
+      <!-- end sidebar scrollbar -->
+    </div>
+    <!-- end #sidebar -->
+      <h1 class="page-header">Dashboard <small>header small text goes here...</small></h1>
+      <!-- end page-header -->
+      <!-- begin row -->
+      <div class="row">
+          <!-- begin col-3 -->
+          <div class="col-lg-3 col-md-6">
+              <div class="widget widget-stats bg-gradient-green">
+                <div class="stats-icon stats-icon-lg"><img src="../../assets/img/dashboard/customer.svg" alt="icon"></div>
+                <div class="stats-content">
+              <div class="stats-title">Contacts</div>
+              <div class="stats-number">2,832,177</div>
+              <div class="stats-progress progress">
+                <div class="progress-bar" style="width: 70.1%;"></div>
+              </div>
+              <div class="stats-desc">Better than last week (70.1%)</div>
+                        </div>
+              </div>
+          </div>
+          <!-- end col-3 -->
+          <!-- begin col-3 -->
+          <div class="col-lg-3 col-md-6">
+              <div class="widget widget-stats bg-gradient-blue">
+                 <div class="stats-icon stats-icon-lg"><img src="../../assets/img/dashboard/team.svg" alt="icon"></div>
+            <div class="stats-content">
+              <div class="stats-title">Companies</div>
+              <div class="stats-number">832,177</div>
+              <div class="stats-progress progress">
+                <div class="progress-bar" style="width: 40.5%;"></div>
+              </div>
+              <div class="stats-desc">Better than last week (40.5%)</div>
+            </div>
+              </div>
+          </div>
+          <!-- end col-3 -->
+          <!-- begin col-3 -->
+          <div class="col-lg-3 col-md-6">
+              <div class="widget widget-stats bg-gradient-blue-dark">
+                <div class="stats-icon stats-icon-lg"><img src="../../assets/img/dashboard/investment.svg" alt="icon"></div>
+                <div class="stats-content">
+                  <div class="stats-title">Enrichment</div>
+                  <div class="stats-number">2,832,177</div>
+                  <div class="stats-progress progress">
+                    <div class="progress-bar" style="width: 76.3%;"></div>
+                  </div>
+                  <div class="stats-desc">Better than last week (76.3%)</div>
+                </div>
+              </div>
+          </div>
+          <!-- end col-3 -->
+          <!-- begin col-3 -->
+          <div class="col-lg-3 col-md-6">
+              <div class="widget widget-stats bg-gradient-purple">
+                <div class="stats-icon stats-icon-lg"><img src="../../assets/img/dashboard/modeled-insights.svg" alt="icon"></div>
+                <div class="stats-content">
+                  <div class="stats-title">Modeled Insights</div>
+                  <div class="stats-number">2,832,177</div>
+                  <div class="stats-progress progress">
+                    <div class="progress-bar" style="width: 54.9%;"></div>
+                  </div>
+                  <div class="stats-desc">Better than last week (54.9%)</div>
+                </div>
+              </div>
+          </div>
+          <!-- end col-3 -->
+      </div>
+      <!-- end row -->
+      
+      <!-- begin row -->
+      <div class="row">
+        <!-- begin col-8 -->
+          <div class="col-xl-8">
+              <div class="panel panel--facebook bg-white">
+                <div class="panel-heading panel-heading--light">
+                  <h4 class="panel-title">FACEBOOK</h4>
+                  <div class="panel-heading-btn">
+                      <a href="javascript:;" class="btn btn-icon" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                      <a href="javascript:;" class="btn btn-icon" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                      <a href="javascript:;" class="btn btn-icon" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                  </div>
+                </div>
+
+                <div class="panel-body panel-body--chart">
+                  <div class="panel__info">
+                    <div class="panel__info-title">Company value<span>In billions of today’s dollars</span></div>
+                    <div class="panel__info-descrciption">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</div>
+                  </div>
+                  <div id="visitors-facebook-chart" style="height: 257px;"></div>
+                </div>
+              </div>
+          </div>
+          <!-- end col-8 -->
+          <!-- begin col-4 -->
+          <div class="col-xl-4">
+              <div class="panel bg-white">
+                <div class="panel-heading panel-heading--light">
+                  <h4 class="panel-title">GROWTH CHART</h4>
+                  <div class="panel-heading-btn">
+                      <a href="javascript:;" class="btn btn-icon" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                      <a href="javascript:;" class="btn btn-icon" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                      <a href="javascript:;" class="btn btn-icon" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                  </div>
+                </div>
+
+                <div class="panel-body panel-body--chart">
+                  <div id="nv-stacked-bar-chart" class="bar-chart" style="height: 340px;"></div>
+                </div>
+              </div>
+          </div>
+          <!-- end col-4 -->
+      </div>
+
+      <div class="row">
+        <div class="col-xl-8"></div>
+        <div class="col-xl-4">
+          <div class="panel bg-white panel--full">
+            <div class="panel-heading panel-heading--light">
+              <h4 class="panel-title">geographical distribution Chart</h4>
+              <div class="panel-heading-btn">
+                  <a href="javascript:;" class="btn btn-icon" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                  <a href="javascript:;" class="btn btn-icon" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                  <a href="javascript:;" class="btn btn-icon" data-click="panel-remove"><i class="fa fa-times"></i></a>
+              </div>
+            </div>
+
+            <div class="panel-body panel-body--chart">
+              <div id="world-map" class="width-full" style="height: 360px;"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <!-- begin col-8 -->
+          <div class="col-xl-8">
+              <div class="panel bg-white">
+                <div class="panel-heading panel-heading--light">
+                  <h4 class="panel-title">Visitors Analytics</h4>
+                  <div class="panel-heading-btn">
+                    <a href="javascript:;" class="btn btn-icon" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                    <a href="javascript:;" class="btn btn-icon" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                    <a href="javascript:;" class="btn btn-icon" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                  </div>
+                </div>
+                <div class="panel-body panel-body--chart">
+                  <div class="widget-chart widget-chart--single">
+                       <div class="panel__info">
+                          <div class="panel__info-descrciption">Where do our visitors come from</div>
+                        </div>
+                      <div class="widget-chart-content widget-chart-content--single">
+                     
+                        <div id="visitors-line-chart-test" class="widget-chart-full-width nvd3-inverse-mode" style="height: 284px;"></div>
+                      </div>
+                      <div class="widget-chart-sidebar bg-gray">
+                          <div class="chart-number">
+                              1,225,729
+                              <small>Total visitors</small>
+                          </div>
+                          <div id="visitors-donut-chart" style="height:205px;" class="nvd3-inverse-mode"></div>
+                          <ul class="chart-legend f-s-11">
+                              <li><i class="fa fa-circle fa-fw text-primary f-s-9 m-r-5 t-minus-1"></i> 34.0% <span>New Visitors</span></li>
+                              <li><i class="fa fa-circle fa-fw text-success f-s-9 m-r-5 t-minus-1"></i> 56.0% <span>Return Visitors</span></li>
+                          </ul>
+                      </div>
+                  </div>
+                </div>
+              </div>
+          </div>
+
+          <!-- end col-8 -->
+          <!-- begin col-4 -->
+          <div class="col-xl-4">
+            <div class="panel bg-white">
+                <div class="panel-heading panel-heading--light">
+                    <h4 class="panel-title">New Registered Users</h4>
+                    <div class="panel-heading-btn">
+                      <a href="javascript:;" class="btn btn-icon" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                      <a href="javascript:;" class="btn btn-icon" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                      <a href="javascript:;" class="btn btn-icon" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                    </div>
+                </div>
+                <ul class="registered-users-list clearfix">
+                    <li>
+                        <a href="javascript:;"><img src="../../assets/img/user/user-5.jpg" alt="" /></a>
+                        <h4 class="username text-ellipsis">
+                            Savory Posh
+                            <small>Algerian</small>
+                        </h4>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><img src="../../assets/img/user/user-3.jpg" alt="" /></a>
+                        <h4 class="username text-ellipsis">
+                            Ancient Caviar
+                            <small>Korean</small>
+                        </h4>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><img src="../../assets/img/user/user-1.jpg" alt="" /></a>
+                        <h4 class="username text-ellipsis">
+                            Marble Lungs
+                            <small>Indian</small>
+                        </h4>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><img src="../../assets/img/user/user-8.jpg" alt="" /></a>
+                        <h4 class="username text-ellipsis">
+                            Blank Bloke
+                            <small>Japanese</small>
+                        </h4>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><img src="../../assets/img/user/user-2.jpg" alt="" /></a>
+                        <h4 class="username text-ellipsis">
+                            Hip Sculling
+                            <small>Cuban</small>
+                        </h4>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><img src="../../assets/img/user/user-6.jpg" alt="" /></a>
+                        <h4 class="username text-ellipsis">
+                            Flat Moon
+                            <small>Nepalese</small>
+                        </h4>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><img src="../../assets/img/user/user-4.jpg" alt="" /></a>
+                        <h4 class="username text-ellipsis">
+                            Packed Puffs
+                            <small>Malaysian></small>
+                        </h4>
+                    </li>
+                    <li>
+                        <a href="javascript:;"><img src="../../assets/img/user/user-9.jpg" alt="" /></a>
+                        <h4 class="username text-ellipsis">
+                            Clay Hike
+                            <small>Swedish</small>
+                        </h4>
+                    </li>
+                </ul>
+                <div class="panel-footer text-center">
+                    <a href="javascript:;">+ See More</a>
+                </div>
+            </div>
+          </div>
+     
+          <!-- end col-4 -->
+      </div>
+
+      <div class="row">
+        <!-- begin col-8 -->
+          <div class="col-xl-4">
+            <div class="panel panel--calendar bg-white" data-sortable-id="index-3">
+                <div class="panel-heading panel-heading--light">
+                  <h4 class="panel-title">calendar</h4>
+                  <div class="panel-heading-btn">
+                    <a href="javascript:;" class="btn btn-icon" data-click="panel-expand"><i class="fa fa-expand"></i></a>
+                    <a href="javascript:;" class="btn btn-icon" data-click="panel-reload"><i class="fa fa-redo"></i></a>
+                    <a href="javascript:;" class="btn btn-icon" data-click="panel-remove"><i class="fa fa-times"></i></a>
+                  </div>
+                </div>
+                <div id="schedule-calendar" class="bootstrap-calendar"></div>
+            </div>
+          </div>
+        </div>
+      <!-- end row -->
+
+    </div>
+
+    <footer class="main-footer">
+
+      <div class="container no-padd">
+        <div class="row">
+            <div class="footer-item col-lg-3">
+                <div class="footer-follow">
+                    <div class="follow-social-wrap">
+         
+                        <div class="follow-title title">FOLLOW US:</div>                                            
+                        <div class="follow-social"><ul class="social-wrap"><li class="social-item"> <a href="https://www.facebook.com/wrench.ai.98"><i class="fab fa-facebook-f" aria-hidden="true"></i></a></li><li class="social-item"> <a href="https://twitter.com/WrenchAI"><i class="fab fa-twitter"></i></a></li><li class="social-item"> <a href="https://www.linkedin.com/company/11246342/"><i class="fab fa-linkedin-in" aria-hidden="true"></i></a></li></ul></div>
+                    </div>
+                    <img src="../../assets/img/dashboard/LOGO-WRENCH.png" class="footer-logo" alt="footer-logo" />
+                </div>
+            </div>
+
+            <div class="footer-item col-lg-2">
+                <div class="footer-sitemap footer-contact">
+                
+                    <div class="sitemap-link-page">
+                        <div class="contact-title title">SITEMAP</div>
+                        <div class="sitemap-link-page">
+                            <a href="#">Our Work</a>
+                        </div>
+                        <div class="sitemap-link-page">
+                            <a href="#">News and Press</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="footer-item col-lg-4">
+                <div class="footer-contact">
+                    
+                    <div class="contact-title title">CONTACT US </div>
+               
+            
+                    <div class="contact-email"><i class="fas fa-envelope-open" aria-hidden="true"></i><a href="mailto:info@wrench.ai" style="color:#bbbbbb; text-decoration:none;">info@wrench.ai</a></div>
+                 
+                    <div class="contact-schedule"><i class="far fa-clock" aria-hidden="true"></i>Monday - Friday PST working hours</div>
+             
+                </div>
+            </div>
+
+            <div class="footer-item col-lg-3">
+                <div class="footer-signup">
+                    <div class="signup-title title">Sign Up</div>
+                    <div class="gf_browser_gecko gform_wrapper submitbtnnew_wrapper" id="gform_wrapper_2"><a id="gf_2" class="gform_anchor"></a><form method="post" enctype="multipart/form-data" target="gform_ajax_frame_2" id="gform_2" class="submitbtnnew" action="/#gf_2"><div class="gform_body"><ul id="gform_fields_2" class="gform_fields top_label form_sublabel_below description_below"><li id="field_2_4" class="gfield mailchimpgforms gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible"><label class="gfield_label" for="input_2_4"><span class="gfield_required">*</span></label><div class="ginput_container ginput_container_text"><input name="input_4" id="input_2_4" type="text" value="" class="medium" placeholder="Name" aria-required="true" aria-invalid="false"></div></li><li id="field_2_3" class="gfield gfield_contains_required field_sublabel_below field_description_below gfield_visibility_visible"><label class="gfield_label" for="input_2_3"><span class="gfield_required">*</span></label><div class="ginput_container ginput_container_email"> <input name="input_3" id="input_2_3" type="text" value="" class="medium" placeholder="Email" aria-required="true" aria-invalid="false"></div></li></ul></div><div class="gform_footer top_label"> <input type="submit" id="gform_submit_button_2" class="gform_button button" value="Submit" > <input type="hidden" name="gform_ajax" value="form_id=2&amp;title=&amp;description=&amp;tabindex=0"> <input type="hidden" class="gform_hidden" name="is_submit_2" value="1"> <input type="hidden" class="gform_hidden" name="gform_submit" value="2"> <input type="hidden" class="gform_hidden" name="gform_unique_id" value=""> <input type="hidden" class="gform_hidden" name="state_2" value="WyJbXSIsIjNkYWRmMTVkYTc4MzhhNWY3MmIxOWQzNzc5N2E3N2Y2Il0="> <input type="hidden" class="gform_hidden" name="gform_target_page_number_2" id="gform_target_page_number_2" value="0"> <input type="hidden" class="gform_hidden" name="gform_source_page_number_2" id="gform_source_page_number_2" value="1"> <input type="hidden" name="gform_field_values" value=""></div></form></div>
+                </div>
+            </div>
+        </div>
+      </div>
+
+    </footer>
+
+    <!-- end #content -->
+        
+    <!-- begin scroll to top btn -->
+    <a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top fade" data-click="scroll-top"><i class="fa fa-angle-up"></i></a>
+    <!-- end scroll to top btn -->
+  </div>
+  <!-- end page container -->
+
+
+  
+  <!-- ================== BEGIN BASE JS ================== -->
+  <script src="../../assets/plugins/jquery/jquery-3.2.1.min.js"></script>
+  <script src="../../assets/plugins/jquery-ui/jquery-ui.min.js"></script>
+  <script src="../../assets/plugins/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+  <!--[if lt IE 9]>
+    <script src="../../assets/crossbrowserjs/html5shiv.js"></script>
+    <script src="../../assets/crossbrowserjs/respond.min.js"></script>
+    <script src="../../assets/crossbrowserjs/excanvas.min.js"></script>
+  <![endif]-->
+  <script src="../../assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+  <script src="../../assets/plugins/js-cookie/js.cookie.js"></script>
+  <script src="../../assets/js/theme/default.min.js"></script>
+  <script src="../../assets/js/apps.min.js"></script>
+
+  <!-- ================== END BASE JS ================== -->
+  
+  <!-- ================== BEGIN PAGE LEVEL JS ================== -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.2/d3.min.js"></script>
+  <script src="../../assets/plugins/nvd3/build/nv.d3.js"></script>
+  <script src="../../assets/plugins/jquery-jvectormap/jquery-jvectormap.min.js"></script>
+  <script src="../../assets/plugins/jquery-jvectormap/jquery-jvectormap-world-merc-en.js"></script>
+  <script src="../../assets/plugins/jquery-jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+  <script src="../../assets/plugins/bootstrap-calendar/js/bootstrap_calendar.js"></script>
+  <script src="../../assets/plugins/gritter/js/jquery.gritter.js"></script>
+  <!-- <script src="../../assets/js/demo/dashboard-v2.min.js"></script> -->
+  <script src="../../assets/js/dashboard.js"></script>
+  <!-- ================== END PAGE LEVEL JS ================== -->
+  
+  <script>
+    $(document).ready(function() {
+      App.init();
+      // DashboardV2.init();
+    });
+  </script>
+  
+</body>
+</html>
