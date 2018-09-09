@@ -1,4 +1,4 @@
-# vue-vuex-boilerplate
+# CRC Dashboard (Vue/vux)
 
 Vue 2, Vuex, Webpack 3 and Typescript 2 setup setting.
 
