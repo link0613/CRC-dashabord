@@ -10,7 +10,6 @@ import { FormContainer } from '../components/containers/Form/';
 // modules
 import { Navbar } from '../components/modules/Navbar/';
 
-// ui
 
 // register the plugin
 Vue.use(VueRouter);

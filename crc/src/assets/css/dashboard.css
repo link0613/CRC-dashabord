@@ -912,10 +912,8 @@ body {
   margin-right: 20px;
 } 
 
-.sidebar .nav>li.active>a, 
-.sidebar .nav>li.active>a:focus, 
-.sidebar .nav>li.active>a:hover {
-  background: transparent;    
+.sidebar .nav>li.active>a,.sidebar .nav>li.active>a:focus, .sidebar .nav>li.active>a:hover {
+  background: transparent;
 }
 
 .sidebar .nav {

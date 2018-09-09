@@ -5,13 +5,12 @@ import store from './store/index';
 import { Navbar } from './components/modules/Navbar/';
 import { Sidebar } from './components/modules/Sidebar/';
 import { Footbar } from './components/modules/Footbar/';
-
-
-
-// import styles
+ // import styles
 import './styles/main.scss';
 
+
 sync(store, router);
+
 
 new Vue({
   el: '#page-container',
