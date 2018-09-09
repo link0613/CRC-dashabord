@@ -1,0 +1,188 @@
+<!-- begin #content -->
+<div id="content" class="content">
+  <!-- begin wizard-form -->
+  <form action="/" method="POST" class="form-control-with-bg">
+    <!-- begin wizard -->
+    <div id="wizard">
+      <!-- begin wizard-step -->
+      <ul class="wd-step__wrapper">
+        <li class="wd-step__item">
+          <a href="#step-1" class="wd-step">
+            <span class="number wd-step__number">1.</span> 
+            <span class="wd-step__title">
+              Fill out your contact info
+              <small class="wd-step__subtitle">Your information</small>
+            </span>
+          </a>
+        </li>
+        <li class="wd-step__item">
+          <a href="#step-2"  class="wd-step">
+            <span class="number wd-step__number">2</span> 
+            <span class="wd-step__title">
+              Enter your contact
+              <small class="wd-step__subtitle">Email and phone no. is required</small>
+            </span>
+          </a>
+        </li>
+        <li class="wd-step__item">
+          <a href="#step-3"  class="wd-step">
+            <span class="number wd-step__number">3</span>
+            <span class="wd-step__title">
+              Login Account
+              <small class="wd-step__subtitle">Enter your username and password</small>
+            </span>
+          </a>
+        </li>
+        <li class="wd-step__item">
+          <a href="#step-4"  class="wd-step">
+            <span class="number wd-step__number">4</span> 
+            <span class="wd-step__title">
+              Completed
+              <small class="wd-step__subtitle">Complete Registration</small>
+            </span>
+          </a>
+        </li>
+      </ul>
+      <!-- end wizard-step -->
+      <!-- begin wizard-content -->
+      <div>
+        <!-- begin step-1 -->
+        <div id="step-1">
+
+          <fieldset>
+      
+            <div class="row">
+        
+              <div class="wd-wrap"> 
+
+                <div class="wd-form__wrapper">
+                  
+                  <legend class="wd-form__header">Information about you</legend>
+                  
+                  <div class="wd-form__wrp" >
+                    <label class="wd-form__label">First Name<span>*</span></label>
+                    <input type="text" name="firstname" placeholder="First Name" class="wd-form__input" />
+                  </div>
+
+                  <div class="wd-form__wrp">
+                    <label class="wd-form__label">Last Name<span>*</span></label>
+                    <input type="text" name="lastname" placeholder="Last Name" class="wd-form__input" />
+                  </div>
+
+                  <div class="wd-form__wrp">
+                    <label class="wd-form__label">Company<span>*</span></label>
+                    <input type="text" name="lastname" placeholder="Company" class="wd-form__input" />
+                  </div>
+
+                  <div class="wd-form__wrp">
+                    <label class="wd-form__label">Phone Number<span>*</span></label>
+                                            <input type="tel" name="lastname" placeholder="555-432-1012" class="wd-form__input" />
+                  </div>
+
+                  <div class="wd-form__wrp">
+                    <label class="wd-form__label">Email address<span>*</span></label>
+                    <input type="email" name="lastname" placeholder="mail@website.com" class="wd-form__input" />
+                  </div>
+
+                  <div class="wd-form__wrp">
+                                            <label class="wd-form__label">Address<span>*</span></label>
+                                            <!-- <div> -->
+                                                <input type="text" name="address1" placeholder="Address 1" class="wd-form__input" />
+                                                <!-- </div> -->
+                                            </div>
+                                        <div class="wd-form__wrp">
+                                                <div></div>
+                                                    <input type="text" name="address2" placeholder="Address 2" class="wd-form__input" />
+
+                                        </div>
+
+                  <div class="wd-form__wrp">
+                    <label class=" wd-form__label">Date of Birth<span>*</span></label>
+                                            <div>
+                                                <select class="wd-form__select-menu " name="year">
+                                                    <option>-- Year --</option>
+                                                </select>
+                    
+                                                <select class="wd-form__select-menu " name="month">
+                                                    <option>-- Month --</option>
+                                                </select>
+                                        
+                                                <select class="wd-form__select-menu " name="day">
+                                                    <option>-- Day --</option>
+                                                </select>
+                                            </div>
+                  </div>
+
+                </div>
+              </div>
+              <!-- end col-8 -->
+            </div>
+            <!-- end row -->
+          </fieldset>
+          <!-- end fieldset -->
+        </div>
+        <!-- end step-1 -->
+        <!-- begin step-2 -->
+        <div id="step-2">
+                        <fieldset>
+                            <div class="wd-form__load">
+                                <div class="wd-form__load--center">
+                                    <p class="wd-form__load--title" >Drop files here or click to upload.</p>
+                                    <p class="wd-form__load--subtitle">(.txt, .tsv, or .docx files are preferrd)</p>
+                                </div>
+                                <input type="file" multiple class="wd-form__load-input">
+                            </div>
+                        </fieldset>
+        </div>
+        <!-- end step-2 -->
+        <!-- begin step-3 -->
+        <div id="step-3">
+          <!-- begin fieldset -->
+          <fieldset>
+
+            <div class="row">
+
+              <div class="wd-wrap">
+
+                                    <div class="wd-form__wrapper">
+
+                                        <legend class="wd-form__header">Select your login username and password</legend>
+                                        
+                                        <div class="wd-form__wrp">
+                                            <label class="wd-form__label">Username<span>*</span></label>
+                                            <input type="text" name="username" placeholder="johnsmithy" class="wd-form__input" />
+                                        </div>
+                                        
+                                        <div class="wd-form__wrp">
+                                            <label class="wd-form__label">Pasword<span>*</span></label>
+                                            <input type="password" name="password" placeholder="Your password" class="wd-form__input" />
+                                        </div>
+                                        
+                                        <div class="wd-form__wrp">
+                                            <label class="wd-form__label">Confirm Pasword<span>*</span></label>
+                                            <input type="password" name="password2" placeholder="Confirmed password" class="wd-form__input" />
+                                        </div>
+
+                                    </div>
+              </div>
+            </div>
+          </fieldset>
+          <!-- end fieldset -->
+        </div>
+        <!-- end step-3 -->
+        <!-- begin step-4 -->
+        <div id="step-4">
+          <div class="wd-form__success">
+            <h2 class="wd-form__success--title">Upload Successfully</h2>
+            <p class="wd-form__success--subtitle">Thanks! We'll start matching your data with your clients. While you're waiting, we've created a profile for you. <br /> Serendipity will now match the data you provided with customers, leads, companies, products, and more.</p>
+            <p><a href="javascript:;" class="wd-btn ">Proceed to User Profile</a></p>
+          </div>
+        </div>
+        <!-- end step-4 -->
+      </div>
+      <!-- end wizard-content -->
+    </div>
+    <!-- end wizard -->
+  </form>
+  <!-- end wizard-form -->
+</div>
