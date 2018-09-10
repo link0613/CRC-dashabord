@@ -28,14 +28,18 @@
     "test:watch": "cross-env NODE_ENV=development karma start karma.unit.js --singleRun=false --auto-watch"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.4",
+    "@fortawesome/free-solid-svg-icons": "^5.3.1",
+    "@fortawesome/vue-fontawesome": "^0.1.1",
     "@updivision/vue2-multi-uploader": "^1.6.2",
-    "axios": "^0.16.2",
+    "axios": "^0.18.0",
     "vue": "^2.5.2",
     "vue-axios": "^2.1.3",
     "vue-class-component": "^6.0.0",
     "vue-cli": "^2.9.1",
     "vue-property-decorator": "^6.0.0",
-    "vue-router": "^3.0.1"
+    "vue-router": "^3.0.1",
+    "vuejs-datepicker": "^1.5.3"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.43",

@@ -3,20 +3,24 @@
   <!-- begin wizard-form -->
   <form action="/" method="POST" class="form-control-with-bg">
     <!-- begin wizard -->
-    <div id="wizard">
+    <div class="form-wizard">
       <!-- begin wizard-step -->
       <ul class="wd-step__wrapper">
         <li class="wd-step__item">
-          <a href="#step-1" class="wd-step">
-            <span class="number wd-step__number">1.</span>
+          <a id="step1" :class="getClassNameForTab(0)" @click="setStep(0)">
+            <span v-if="formValidated[0] && step!=0"  class="wd-step__item">
+              <FontAwesomeIcon icon="check"/>
+            </span>
+            <span v-else class="number wd-step__number">1</span>
             <span class="wd-step__title">
               Fill out your contact info
+              
               <small class="wd-step__subtitle">Your information</small>
             </span>
           </a>
         </li>
         <li class="wd-step__item">
-          <a href="#step-2" class="wd-step">
+          <a id="step2" :class="getClassNameForTab(1)" @click="setStep(1)">
             <span class="number wd-step__number">2</span>
             <span class="wd-step__title">
               Enter your contact
@@ -25,7 +29,7 @@
           </a>
         </li>
         <li class="wd-step__item">
-          <a href="#step-3" class="wd-step">
+          <a id="step3" :class="getClassNameForTab(2)" @click="setStep(2)">
             <span class="number wd-step__number">3</span>
             <span class="wd-step__title">
               Login Account
@@ -34,7 +38,7 @@
           </a>
         </li>
         <li class="wd-step__item">
-          <a href="#step-4" class="wd-step">
+          <a id="step4" :class="getClassNameForTab(3)" @click="setStep(3)">
             <span class="number wd-step__number">4</span>
             <span class="wd-step__title">
               Completed
@@ -47,7 +51,7 @@
       <!-- begin wizard-content -->
       <div>
         <!-- begin step-1 -->
-        <div id="step-1">
+        <div id="step-1" v-show="step==0">
 
           <fieldset>
 
@@ -61,55 +65,45 @@
 
                   <div class="wd-form__wrp">
                     <label class="wd-form__label">First Name<span>*</span></label>
-                    <input type="text" name="firstname" placeholder="First Name" class="wd-form__input" />
+                    <input type="text" placeholder="First Name" v-model="firstName" @change="firstNameValidated=true" :class="`wd-form__input ${firstNameValidated?'':'input-error'}`" />
                   </div>
 
                   <div class="wd-form__wrp">
                     <label class="wd-form__label">Last Name<span>*</span></label>
-                    <input type="text" name="lastname" placeholder="Last Name" class="wd-form__input" />
+                    <input type="text" placeholder="Last Name" v-model="lastName" @change="lastNameValidated=true" :class="`wd-form__input ${lastNameValidated?'':'input-error'}`" />
                   </div>
 
                   <div class="wd-form__wrp">
                     <label class="wd-form__label">Company<span>*</span></label>
-                    <input type="text" name="lastname" placeholder="Company" class="wd-form__input" />
+                    <input type="text" placeholder="Company" v-model="company" @change="companyValidated=true" :class="`wd-form__input ${companyValidated?'':'input-error'}`" />
                   </div>
 
                   <div class="wd-form__wrp">
                     <label class="wd-form__label">Phone Number<span>*</span></label>
-                    <input type="tel" name="lastname" placeholder="555-432-1012" class="wd-form__input" />
+                    <input type="tel" placeholder="555-432-1012" v-model="phoneNumber" @change="phoneNumberValidated=true" :class="`wd-form__input ${phoneNumberValidated?'':'input-error'}`" />
                   </div>
 
                   <div class="wd-form__wrp">
                     <label class="wd-form__label">Email address<span>*</span></label>
-                    <input type="email" name="lastname" placeholder="mail@website.com" class="wd-form__input" />
+                    <input type="email" placeholder="mail@website.com" v-model="email" @change="emailValidated=true" :class="`wd-form__input ${emailValidated?'':'input-error'}`" />
                   </div>
 
                   <div class="wd-form__wrp">
                     <label class="wd-form__label">Address<span>*</span></label>
                     <!-- <div> -->
-                    <input type="text" name="address1" placeholder="Address 1" class="wd-form__input" />
+                    <input type="text" name="address1" placeholder="Address 1" v-model="address1" @change="addressValidated=true" :class="`wd-form__input ${addressValidated?'':'input-error'}`" />
                     <!-- </div> -->
                   </div>
                   <div class="wd-form__wrp">
                     <div></div>
-                    <input type="text" name="address2" placeholder="Address 2" class="wd-form__input" />
+                    <input type="text" name="address2" placeholder="Address 2" v-model="address2" @change="addressValidated=true" :class="`wd-form__input ${addressValidated?'':'input-error'}`" />
 
                   </div>
 
                   <div class="wd-form__wrp">
                     <label class=" wd-form__label">Date of Birth<span>*</span></label>
                     <div>
-                      <select class="wd-form__select-menu " name="year">
-                        <option>-- Year --</option>
-                      </select>
-
-                      <select class="wd-form__select-menu " name="month">
-                        <option>-- Month --</option>
-                      </select>
-
-                      <select class="wd-form__select-menu " name="day">
-                        <option>-- Day --</option>
-                      </select>
+                      <datepicker v-model="birthday" name="birthday" format="yyyy-MM-dd" :disabled="formValidated[0]"></datepicker>
                     </div>
                   </div>
 
@@ -123,7 +117,7 @@
         </div>
         <!-- end step-1 -->
         <!-- begin step-2 -->
-        <div id="step-2">
+        <div id="step-2"  v-show="step==1">
           <fieldset>
             <div class="wd-form__load">
               <multiple-file-uploader 
@@ -134,7 +128,7 @@
                 dropAreaPrimaryMessage="Drop files here or click to upload."
                 dropAreaSecondaryMessage="(.txt, .tsv, or .docx files are preferrd)"
                 @upload-success='success_handler'
-                showHttpMessages="false"
+                :showHttpMessages="false"
                 >
               </multiple-file-uploader>
             </div>
@@ -142,7 +136,7 @@
         </div>
         <!-- end step-2 -->
         <!-- begin step-3 -->
-        <div id="step-3">
+        <div id="step-3"  v-show="step==2">
           <!-- begin fieldset -->
           <fieldset>
 
@@ -177,7 +171,7 @@
         </div>
         <!-- end step-3 -->
         <!-- begin step-4 -->
-        <div id="step-4">
+        <div id="step-4"  v-show="step==3">
           <div class="wd-form__success">
             <h2 class="wd-form__success--title">Upload Successfully</h2>
             <p class="wd-form__success--subtitle">Thanks! We'll start matching your data with your clients. While
@@ -188,6 +182,13 @@
         </div>
         <!-- end step-4 -->
       </div>
+
+      <nav class="wd-form__footer">
+        <div class="btn-group navbar-btn sw-btn-group pull-right" role="group">
+          <button class="btn btn-default sw-btn-prev wd-btn-prev" type="button" @click="prevStep" :disabled="isDisabledPrevBtn()">Previous</button>
+          <button class="btn btn-default sw-btn-next wd-btn-next" type="button" @click="nextStep" :disabled="isDisabledNextBtn()">Next</button>
+        </div>
+      </nav>
       <!-- end wizard-content -->
     </div>
     <!-- end wizard -->

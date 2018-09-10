@@ -24,7 +24,14 @@ const mutations: MutationTree<State> = {
         });
       });
     }
+  // },
+  // [MutationTypes.SUBMIT_CONTACT_INFO]: (state: State, {items}) => {
+  //   console.log('llllllll', items)
+  // }
   }
+
+
+
 };
 
 export default mutations;
