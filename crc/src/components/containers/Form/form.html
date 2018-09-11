@@ -121,7 +121,8 @@
           <fieldset>
             <div class="wd-form__load">
               <multiple-file-uploader 
-                postURL="http://.." 
+              
+                postURL="http://ec2-18-235-1-238.compute-1.amazonaws.com:5000/enrich" 
                 successMessagePath="" 
                 errorMessagePath=""
                 headerMessage=""
@@ -129,6 +130,7 @@
                 dropAreaSecondaryMessage="(.txt, .tsv, or .docx files are preferrd)"
                 @upload-success='success_handler'
                 :showHttpMessages="false"
+                :postData="{client_name: 'Lazar' }"
                 >
               </multiple-file-uploader>
             </div>

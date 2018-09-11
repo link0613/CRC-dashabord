@@ -43,7 +43,8 @@ export class FormContainer extends Vue {
   addressValidated = true;
   address2 = '';
   birthday = new Date(1980, 1,  1);
-
+  fileUpLoadValidated = false;
+ 
 
   // @Watch('firstName') firstNameChanged(value, oldValue) {
   //   this.firstNameValidated = value!='';
@@ -59,6 +60,7 @@ export class FormContainer extends Vue {
       if (this.step === 0) {
         this.submitContactInfo()
       }
+
       this.step++;
     }
   }
@@ -110,6 +112,10 @@ export class FormContainer extends Vue {
       } else {
         this.formValidated[tab] = false;
       }
+    } if ( tab == 1 ) {
+      if ( this.fileUpLoadValidated ) {
+        return true;
+      }
     }
     return false;
   }
@@ -133,6 +139,8 @@ export class FormContainer extends Vue {
   }
 
   success_handler (response){
+    console.log(response,'slfjlksjdfljsfdlkj')
+    this.fileUpLoadValidated = false;
 
   } 
 
