@@ -11,9 +11,7 @@ import { StripeForm } from '../../modules/StripeForm';
 })
 export class AppContainer extends Vue {
 
-  package: string = 'vue-vuex-boillerplate';
-  logo: string = '../assets/images/logo.png';
-  repo: string = 'https://github.com/bamboo-c/vue-vuex-boilerplate';
+
   mode: string = process.env.ENV;
 
 }
