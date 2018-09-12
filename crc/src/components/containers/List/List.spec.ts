@@ -1,8 +1,8 @@
 import Component from 'vue-class-component';
 import { expect } from 'chai';
 import { ComponentTest } from '../../../utils/component-test';
-import { ListContainer } from './';
-import store from '../../../store/';
+import { ListContainer } from '.';
+import store from '../../../store';
 
 @Component({
   template: require('./list.html')

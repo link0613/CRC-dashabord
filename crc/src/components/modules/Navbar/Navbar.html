@@ -21,7 +21,7 @@
 		<div id="header" class="header navbar-default">
       <!-- begin navbar-header -->
       <div class="navbar-header">
-          <a href="index.html" class="navbar-brand">
+          <a class="navbar-brand" @click="tempStripeAction">
             <img src="../assets/images/dashboard/LOGOwr.png" alt="logo">
           </a>
           <button type="button" class="navbar-toggle" data-click="sidebar-toggled">
@@ -30,10 +30,10 @@
             <span class="icon-bar"></span>
           </button>
         </div>
-    <!-- end navbar-header -->
-    
-    <!-- begin header-nav -->
-    <ul class="navbar-nav navbar-right">
+        <!-- end navbar-header -->
+        
+        <!-- begin header-nav -->
+        <ul class="navbar-nav navbar-right">
           <li class="navbar__search">
             <form class="navbar-form">
               <div class="form-group">
@@ -131,6 +131,7 @@
             </div>
           </li>
         </ul>
+        
       <!-- end header navigation right -->
     </div>
     <!-- end #header -->

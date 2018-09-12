@@ -2,7 +2,7 @@ import Vue from 'vue';
 import { Component, Watch } from 'vue-property-decorator';
 import { Link } from './Link';
 import { Logger } from '../../../utils/log';
-
+import {MutationTypes} from '../../../store/mutation-types';
 @Component({
   template: require('./navbar.html')
 })
@@ -28,5 +28,9 @@ export class Navbar extends Vue {
   mounted() {
     if (!this.logger) this.logger = new Logger();
     this.$nextTick(() => this.logger.info(this.object.default));
+  }
+
+  tempStripeAction() {
+    this.$store.dispatch(MutationTypes.STRIPE_A1);
   }
 }

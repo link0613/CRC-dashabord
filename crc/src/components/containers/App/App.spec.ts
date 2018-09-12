@@ -1,5 +1,5 @@
 import { expect } from 'chai';
-import { AppContainer } from './';
+import { AppContainer } from '.';
 import { ComponentTest } from '../../../utils/component-test';
 
 describe('Home component', () => {
