@@ -38,6 +38,10 @@ const router = new VueRouter({
       component: DashboardContainer,
       name: 'dashboard',
       path: '/dashboard',
+    }, {
+      component: DashboardContainer,
+      name: 'dashboard',
+      path: '/dashboard',
     }
   ],
 });
