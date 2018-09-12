@@ -3,13 +3,17 @@ import VueRouter from 'vue-router';
 
 // conatiners
 import { AppContainer } from '../components/containers/App';
-import { CounterContainer } from '../components/containers/Counter';
-import { ListContainer } from '../components/containers/List';
+
 import { FormContainer } from '../components/containers/Form';
 import { DashboardContainer } from '../components/containers/Dashboard';
+import { AdminContainer } from '../components/containers/Admin';
 
 // modules
 import { Navbar } from '../components/modules/Navbar';
+
+////for testing
+import { CounterContainer } from '../components/containers/Counter';
+import { ListContainer } from '../components/containers/List';
 
 
 // register the plugin
@@ -23,14 +27,6 @@ const router = new VueRouter({
       name: 'index',
       path: '/',
     }, {
-      component: CounterContainer,
-      name: 'counter',
-      path: '/counter',
-    }, {
-      component: ListContainer,
-      name: 'list',
-      path: '/list',
-    }, {
       component: FormContainer,
       name: 'form',
       path: '/form',
@@ -39,9 +35,21 @@ const router = new VueRouter({
       name: 'dashboard',
       path: '/dashboard',
     }, {
-      component: DashboardContainer,
-      name: 'dashboard',
-      path: '/dashboard',
+      component: AdminContainer,
+      name: 'admin',
+      path: '/admin',
+    }, 
+    
+    
+    ////////////////// --------testing------ ////////////
+    {
+      component: CounterContainer,
+      name: 'counter',
+      path: '/counter',
+    }, {
+      component: ListContainer,
+      name: 'list',
+      path: '/list',
     }
   ],
 });
