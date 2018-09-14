@@ -3,6 +3,8 @@ import {MutationTree} from 'vuex';
 import {MutationTypes} from './mutation-types';
 import {State} from './state';
 
+declare var localStorage;
+
 const mutations: MutationTree<State> = {
   [MutationTypes.INCREMENT_VALUE]: (state: State) => {
     state.count += 1;
@@ -13,6 +15,11 @@ const mutations: MutationTree<State> = {
   },
   [MutationTypes.RESET_VALUE]: (state: State) => {
     state.count = 0;
+  },
+
+  [MutationTypes.LOGIN_CHANGED]: (state: State) => {
+    state.loginStorage = localStorage;
+    console.log('loginChanged', state.loginStorage)
   },
 
   [MutationTypes.GET_LIST]: (state: State, {items}) => {

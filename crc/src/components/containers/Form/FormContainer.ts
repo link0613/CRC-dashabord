@@ -8,6 +8,7 @@ import Datepicker from 'vuejs-datepicker';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+import store from '../../../store';
 
 library.add(faCheck)
 
@@ -28,6 +29,11 @@ export class FormContainer extends Vue {
   step = 0;
   formValidated = [];
 
+  userName = '';
+  userNameValidated = true;
+  password = '';
+  passwordValidated = true;
+
   // FILL OUT YOUR CONTACT INFO
   firstName = '';
   firstNameValidated = true;
@@ -44,11 +50,29 @@ export class FormContainer extends Vue {
   address2 = '';
   birthday = new Date(1980, 1,  1);
   fileUpLoadValidated = false;
- 
 
-  // @Watch('firstName') firstNameChanged(value, oldValue) {
-  //   this.firstNameValidated = value!='';
-  // }
+
+  @Watch('loginStorage') loginStorageChanged(value, oldValue) {
+    console.log(this.loginStorage, 'sdlfjskldfjklsjdfklsdflkjksldfjl');
+  }
+  get loginStorage() {
+    return this.$store.state.loginStorage;
+  }
+
+  mounted() {
+    console.log('---------------------')
+    this.formValidated[0] = true;
+  }
+
+  //Login
+  login() {
+    this.userNameValidated = this.userName !== '';
+    this.passwordValidated = this.password !== '';
+    if (this.userNameValidated && this.passwordValidated) {
+      const loginInfo = {username: this.userName, password: this.password};
+      this.$store.dispatch(MutationTypes.LOGIN_USER, loginInfo);
+    }
+  }
 
   // COMMON 
   getClassNameForTab (tab) {
@@ -57,8 +81,12 @@ export class FormContainer extends Vue {
  
   nextStep() {
     if (this.validateStep(this.step)) {
-      if (this.step === 0) {
-        this.submitContactInfo()
+      switch(this.step) {
+        case 0:
+          break;
+        case 1:
+          this.submitContactInfo();
+          break;
       }
 
       this.step++;
@@ -94,29 +122,40 @@ export class FormContainer extends Vue {
   }
 
   validateStep(tab){
-    // FILL OUT YOUR CONTACT INFO
-    if (tab === 0) {
-      this.firstNameValidated = this.firstName !== '';
-      this.lastNameValidated = this.lastName !== '';
-      this.phoneNumberValidated = this.phoneNumber !== '';
-      this.companyValidated = this.company !== '';
-      this.emailValidated = this.email !== '';
-      this.addressValidated = this.address1 + this.address2 !== '';
-      if (this.firstNameValidated &&
-          this.lastNameValidated &&
-          this.phoneNumberValidated &&
-          this.companyValidated &&
-          this.emailValidated) {
-            this.formValidated[tab] = true;
-            return true;
-      } else {
-        this.formValidated[tab] = false;
-      }
-    } if ( tab == 1 ) {
-      if ( this.fileUpLoadValidated ) {
-        return true;
-      }
+    switch(tab) {
+      case 0:
+        const configString = this.$store.state.loginStorage.getItem("awsConfig");
+        const config = JSON.parse(configString);
+        if(config != null) {
+          this.formValidated[tab] = true;
+          return true
+        }
+        
+        break;
+      case 1:
+        this.firstNameValidated = this.firstName !== '';
+        this.lastNameValidated = this.lastName !== '';
+        this.phoneNumberValidated = this.phoneNumber !== '';
+        this.companyValidated = this.company !== '';
+        this.emailValidated = this.email !== '';
+        this.addressValidated = this.address1 + this.address2 !== '';
+        if (this.firstNameValidated &&
+            this.lastNameValidated &&
+            this.phoneNumberValidated &&
+            this.companyValidated &&
+            this.emailValidated) {
+              this.formValidated[tab] = true;
+              return true;
+        }  
+        break;
+      case 2:
+        if ( this.fileUpLoadValidated ) {
+          return true;
+        }      
+        break;
+      default:
     }
+    this.formValidated[tab] = false;
     return false;
   }
 

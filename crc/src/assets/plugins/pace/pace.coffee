@@ -203,12 +203,12 @@ class Bar
       document.body.className = document.body.className.replace /pace-done/g, ''
       document.body.className += ' pace-running'
 
-      @el.innerHTML = '''
-      <div class="pace-progress">
-        <div class="pace-progress-inner"></div>
-      </div>
-      <div class="pace-activity"></div>
-      '''
+      # @el.innerHTML = '''
+      # <div class="pace-progress">
+      #   <div class="pace-progress-inner"></div>
+      # </div>
+      # <div class="pace-activity"></div>
+      # '''
       if targetElement.firstChild?
         targetElement.insertBefore @el, targetElement.firstChild
       else

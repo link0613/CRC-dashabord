@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import { Component, Watch } from 'vue-property-decorator';
+import {MutationTypes} from '../../../store/mutation-types';
 
 declare var stripe: any;
 declare var elements: any;
@@ -24,6 +25,7 @@ export class StripeForm extends Vue {
   card: any;
   error: string;
   hasCardErrors: boolean;
+  amount: number  = 0;
 
   mounted() {
     this.card = elements.create('card', {style});
@@ -33,13 +35,18 @@ export class StripeForm extends Vue {
 
   async purchase () {
     let self = this;
+    
     const { token, error } = await stripe.createToken(this.card);
 
     if (error) {
       console.log('Something is wrong:', error);
     } else {
       console.log('Success!', token);
-      // ...send the token to the your backend to process the charge
+
+
+      this.$store.dispatch(MutationTypes.STRIPE_A1, {client_name:'Wrench.AI', token: token, amount: this.amount});
+
+
     }
     
  

@@ -5,13 +5,31 @@
     <!-- begin wizard -->
     <div class="form-wizard">
       <!-- begin wizard-step -->
+      
       <ul class="wd-step__wrapper">
+
+
         <li class="wd-step__item">
           <a id="step1" :class="getClassNameForTab(0)" @click="setStep(0)">
-            <span v-if="formValidated[0] && step!=0"  class="wd-step__item">
+            
+            <span v-if="formValidated[0] && step!=0"  class="wd-step__number">
               <FontAwesomeIcon icon="check"/>
             </span>
             <span v-else class="number wd-step__number">1</span>
+
+            <span class="wd-step__title">
+              Login Account
+              <small class="wd-step__subtitle">Enter your username and password</small>
+            </span>
+          </a>
+        </li>     
+
+        <li class="wd-step__item">
+          <a id="step2" :class="getClassNameForTab(1)" @click="setStep(1)">
+            <span v-if="formValidated[1] && step!=1"  class="wd-step__number">
+              <FontAwesomeIcon icon="check"/>
+            </span>
+            <span v-else class="number wd-step__number">2</span>
             <span class="wd-step__title">
               Fill out your contact info
               
@@ -19,24 +37,23 @@
             </span>
           </a>
         </li>
+
         <li class="wd-step__item">
-          <a id="step2" :class="getClassNameForTab(1)" @click="setStep(1)">
-            <span class="number wd-step__number">2</span>
+          <a id="step3" :class="getClassNameForTab(2)" @click="setStep(2)">
+            <span v-if="formValidated[2] && step!=2"  class="wd-step__number">
+              <FontAwesomeIcon icon="check"/>
+            </span>
+            <span v-else class="number wd-step__number">3</span>
+
             <span class="wd-step__title">
               Enter your contact
               <small class="wd-step__subtitle">Email and phone no. is required</small>
             </span>
           </a>
         </li>
-        <li class="wd-step__item">
-          <a id="step3" :class="getClassNameForTab(2)" @click="setStep(2)">
-            <span class="number wd-step__number">3</span>
-            <span class="wd-step__title">
-              Login Account
-              <small class="wd-step__subtitle">Enter your username and password</small>
-            </span>
-          </a>
-        </li>
+
+
+        
         <li class="wd-step__item">
           <a id="step4" :class="getClassNameForTab(3)" @click="setStep(3)">
             <span class="number wd-step__number">4</span>
@@ -48,10 +65,64 @@
         </li>
       </ul>
       <!-- end wizard-step -->
+        <!-- begin step-3 -->
+        <div v-show="step==0">
+          <!-- begin fieldset -->
+          <fieldset>
+
+            <div class="row">
+
+              <div class="wd-wrap">
+                sfljslkdfjslkjflkajslkfjlksfjlkajsfdlkjlkjlkalksdlkslsklalkjflkasjdfsdfkkdskksk
+                {{formValidated[0]}}
+                <div class="wd-form__wrapper" v-if="formValidated[0]">
+
+                  <legend class="wd-form__header">You are now logged in.</legend>
+
+                  <div class="btn-group navbar-btn sw-btn-group pull-right" role="group">
+                    <!-- <button class="btn btn-default sw-btn-next wd-btn-next" type="button" @click="nextStep" :disabled="isDisabledNextBtn()">Next</button> -->
+                    <button class="btn btn-default sw-btn-next wd-btn-next" type="button">Logout</button>
+                  </div>
+
+                </div>
+                <div class="wd-form__wrapper" v-else>
+
+                  <legend class="wd-form__header">Select your login username and password</legend>
+
+                  <div class="wd-form__wrp">
+                    <label class="wd-form__label">Username<span>*</span></label>
+                    <input type="text" name="username" placeholder="johnsmithy" v-model="userName" @change="userNameValidated=true" :class="`wd-form__input ${userNameValidated?'':'input-error'}`"/>
+                  </div>
+
+                  <div class="wd-form__wrp">
+                    <label class="wd-form__label">Pasword<span>*</span></label>
+                    <input type="password" name="password" placeholder="Your password" v-model="password" @change="passwordValidated=true" :class="`wd-form__input ${passwordValidated?'':'input-error'}`"/>
+                  </div>
+
+                    <div class="btn-group navbar-btn sw-btn-group pull-right" role="group">
+                      <!-- <button class="btn btn-default sw-btn-next wd-btn-next" type="button" @click="nextStep" :disabled="isDisabledNextBtn()">Next</button> -->
+                      <button class="btn btn-default sw-btn-next wd-btn-next" type="button" @click="login">Login</button>
+                    </div>
+
+
+                  <!-- 
+                  <div class="wd-form__wrp">
+                    <label class="wd-form__label">Confirm Pasword<span>*</span></label>
+                    <input type="password" name="password2" placeholder="Confirmed password" class="wd-form__input" />
+                  </div> -->
+
+                </div>
+              </div>
+            </div>
+          </fieldset>
+          <!-- end fieldset -->
+        </div>
+        <!-- end step-3 -->
+
       <!-- begin wizard-content -->
       <div>
         <!-- begin step-1 -->
-        <div id="step-1" v-show="step==0">
+        <div v-show="step==1">
 
           <fieldset>
 
@@ -117,7 +188,7 @@
         </div>
         <!-- end step-1 -->
         <!-- begin step-2 -->
-        <div id="step-2"  v-show="step==1">
+        <div v-show="step==2">
           <fieldset>
             <div class="wd-form__load">
               <multiple-file-uploader 
@@ -137,43 +208,9 @@
           </fieldset>
         </div>
         <!-- end step-2 -->
-        <!-- begin step-3 -->
-        <div id="step-3"  v-show="step==2">
-          <!-- begin fieldset -->
-          <fieldset>
 
-            <div class="row">
-
-              <div class="wd-wrap">
-
-                <div class="wd-form__wrapper">
-
-                  <legend class="wd-form__header">Select your login username and password</legend>
-
-                  <div class="wd-form__wrp">
-                    <label class="wd-form__label">Username<span>*</span></label>
-                    <input type="text" name="username" placeholder="johnsmithy" class="wd-form__input" />
-                  </div>
-
-                  <div class="wd-form__wrp">
-                    <label class="wd-form__label">Pasword<span>*</span></label>
-                    <input type="password" name="password" placeholder="Your password" class="wd-form__input" />
-                  </div>
-
-                  <div class="wd-form__wrp">
-                    <label class="wd-form__label">Confirm Pasword<span>*</span></label>
-                    <input type="password" name="password2" placeholder="Confirmed password" class="wd-form__input" />
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </fieldset>
-          <!-- end fieldset -->
-        </div>
-        <!-- end step-3 -->
         <!-- begin step-4 -->
-        <div id="step-4"  v-show="step==3">
+        <div v-show="step==3">
           <div class="wd-form__success">
             <h2 class="wd-form__success--title">Upload Successfully</h2>
             <p class="wd-form__success--subtitle">Thanks! We'll start matching your data with your clients. While
