@@ -60,6 +60,9 @@ export class FormContainer extends Vue {
 
   @Watch('submittedContactInfo') submittedContactInfoChanged(value, oldValue) {
     console.log(this.submittedContactInfo, 'callback api (submit contract)')
+    if (this.submittedContactInfo) {
+      if (this.step == 1) this.step = 2;
+    }
   }
 
 
@@ -103,7 +106,11 @@ export class FormContainer extends Vue {
           this.step++;
           break;
         case 1:
-          this.submitContactInfo();
+          if (this.submittedContactInfo) {
+            this.step++;
+          } else {
+            this.submitContactInfo();
+          }
           break;
       }
 
