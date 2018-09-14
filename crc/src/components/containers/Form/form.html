@@ -12,7 +12,7 @@
         <li class="wd-step__item">
           <a id="step1" :class="getClassNameForTab(0)" @click="setStep(0)">
             
-            <span v-if="formValidated[0] && step!=0"  class="wd-step__number">
+            <span v-if="loggedIn && step!=0"  class="wd-step__number">
               <FontAwesomeIcon icon="check"/>
             </span>
             <span v-else class="number wd-step__number">1</span>
@@ -26,7 +26,7 @@
 
         <li class="wd-step__item">
           <a id="step2" :class="getClassNameForTab(1)" @click="setStep(1)">
-            <span v-if="formValidated[1] && step!=1"  class="wd-step__number">
+            <span v-if="submittedContactInfo && step!=1"  class="wd-step__number">
               <FontAwesomeIcon icon="check"/>
             </span>
             <span v-else class="number wd-step__number">2</span>

@@ -85,7 +85,15 @@ export class FormContainer extends Vue {
 
   // COMMON 
   getClassNameForTab (tab) {
-    return `wd-step ${this.step === tab ? 'active' : ''} ${this.formValidated[this.step] ? 'done':''}`
+    
+    let class1 = `wd-step ${this.step === tab ? 'active' : ''}`;
+    if (tab == 0) {
+      return `${class1} ${this.loggedIn ? 'done ': ''}`
+    
+    } else if (tab == 1) {
+      return `${class1} ${this.submittedContactInfo ? 'done ': ''}`
+    }
+    return class1;
   }
  
   nextStep() {
