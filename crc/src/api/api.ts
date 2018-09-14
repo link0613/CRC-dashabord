@@ -1,8 +1,7 @@
 import axios from 'axios'
 
 
-let baseUrl = 'https://rw3gl2g6ff.execute-api.us-east-1.amazonaws.com/'; //'https://go.wrench.ai/';
-
+let baseUrl = 'https://rw3gl2g6ff.execute-api.us-east-1.amazonaws.com/prod'; //'https://go.wrench.ai/';
 
 let convertObjectToFormData = (items) => {
   const formData = new FormData()

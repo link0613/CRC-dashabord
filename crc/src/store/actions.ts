@@ -17,7 +17,7 @@ const actions: ActionTree<State, State> = {
 
   [MutationTypes.STRIPE_A1]: ({commit}, stripeData) => {
     
-    sendPost('prod/stripe', stripeData, 
+    sendPost('/stripe', stripeData, 
       {
       'Content-Type': 'application/json', 
       'Access-Control-Request-Method': 'POST',
@@ -50,7 +50,7 @@ const actions: ActionTree<State, State> = {
 
   [MutationTypes.SUBMIT_CONTACT_INFO]: ({commit}, contactInfo) => {
     // contactInfo = {"first_name": "Dave", "last_name": "Smith", "company_name": "Wrench.AI Test sssss 1", "phone_number": "888-555-1212", "email": "kevin@wrench.ai", "street_1": "555 Main St.", "street_2": "Apt 2B", "city": "Los Angeles", "state": "CA", "zip": "91203", "year": "1970", "month": "01", "day": "21"};
-    sendPost('contact_info', contactInfo, 
+    sendPost('/contact_info', contactInfo, 
       {
       'Content-Type': 'application/json', 
       'Access-Control-Request-Method': 'POST',
@@ -58,6 +58,7 @@ const actions: ActionTree<State, State> = {
       'Access-Control-Request-Origin': 'https://foo.bar.org' })
     .then((res: any) => {
       console.log(res)
+      commit(MutationTypes.SUBMIT_CONTACT_INFO);
     })
     .catch((error: any) => {
       if (error.response && error.response.data) {

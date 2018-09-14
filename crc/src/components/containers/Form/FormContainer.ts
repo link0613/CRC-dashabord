@@ -56,10 +56,11 @@ export class FormContainer extends Vue {
 
   @Getter('loginStorage', {}) loginStorage!: any;
   @Getter('loggedIn', {}) loggedIn!: any;
+  @Getter('submittedContactInfo', {}) submittedContactInfo: any;
 
-  // @Watch('loggedIn') loggedInChanged(value, oldValue) {
-  //   this.validateStep(0);
-  // }
+  @Watch('submittedContactInfo') submittedContactInfoChanged(value, oldValue) {
+    console.log(this.submittedContactInfo, 'callback api (submit contract)')
+  }
 
 
   // mounted() {
@@ -90,14 +91,15 @@ export class FormContainer extends Vue {
   nextStep() {
     if (this.validateStep(this.step)) {
       switch(this.step) {
-        case 0:
+        case 0: 
+          this.step++;
           break;
         case 1:
           this.submitContactInfo();
           break;
       }
 
-      this.step++;
+     
     }
   }
 

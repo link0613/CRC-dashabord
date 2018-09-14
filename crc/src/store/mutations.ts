@@ -22,6 +22,9 @@ const mutations: MutationTree<State> = {
     state.loggedIn = false;
     state.loginStorage = localStorage;
     console.log('logout user', state.loginStorage)
+  },
+  [MutationTypes.SUBMIT_CONTACT_INFO]: (state: State) => {
+    state.submittedContactInfo = true;
   }
 
 };
