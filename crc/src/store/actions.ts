@@ -1,7 +1,6 @@
 import {ActionTree} from 'vuex';
 import {MutationTypes} from './mutation-types';
 import {State} from './state';
-import * as listAPI from '../api/listItems';
 import { sendPost, sendPostForm } from '../api/api';
 
 declare function loginUser(email, pwd): any;

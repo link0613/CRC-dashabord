@@ -36,23 +36,21 @@ let config = {
   }
 }
 
-if (localStorage.getItem('sessionTokens') || sessionStorage.getItem('sessionTokens')) {
-  const tokenInfo = JSON.parse(localStorage.getItem('sessionTokens') || sessionStorage.getItem('sessionTokens'))
-
-  config.axiosConfig.headers['authorization'] = 'Bearer ' +  tokenInfo['IdToken']['jwtToken'];
-  console.log(config.axiosConfig.headers['authorization'] )
+let setConfig = () => {
+  if (localStorage.getItem('sessionTokens') || sessionStorage.getItem('sessionTokens')) {
+    const tokenInfo = JSON.parse(localStorage.getItem('sessionTokens') || sessionStorage.getItem('sessionTokens'))
+  
+    config.axiosConfig.headers['authorization'] = 'Bearer ' +  tokenInfo['IdToken']['jwtToken'];
+    console.log(config.axiosConfig.headers['authorization'] )
+  }
 }
 
-let $http = axios.create(config.axiosConfig)
 
-if (localStorage.getItem('sessionTokens') || sessionStorage.getItem('sessionTokens')) {
-  const tokenInfo = JSON.parse(localStorage.getItem('sessionTokens') || sessionStorage.getItem('sessionTokens'))
 
-  config.axiosConfig.headers['authorization'] = 'Bearer ' +  tokenInfo['IdToken']['jwtToken'];
-  console.log(config.axiosConfig.headers['authorization'] )
-}
 
 let sendPostForm = (url, payload, headers = null) => {
+  setConfig()
+  let $http = axios.create(config.axiosConfig)
   return new Promise((resolve, reject) => {
     $http.post(url, convertObjectToFormData(payload))
       .then((handleSuccess) => {
@@ -65,6 +63,8 @@ let sendPostForm = (url, payload, headers = null) => {
 }
 
 let sendPost = (url, payload, headers = null) => {
+  setConfig()
+  let $http = axios.create(config.axiosConfig)
   return new Promise((resolve, reject) => {
     $http.post(url, payload)
       .then((handleSuccess) => {
@@ -77,6 +77,9 @@ let sendPost = (url, payload, headers = null) => {
 }
 
 let sendPatchForm = (url, payload, headers = null) => {
+  setConfig()
+  let $http = axios.create(config.axiosConfig)
+
   return new Promise((resolve, reject) => {
     $http.patch(url, convertObjectToUrlData(payload), headers)
       .then((handleSuccess) => {
@@ -89,6 +92,9 @@ let sendPatchForm = (url, payload, headers = null) => {
 }
 
 let sendPatch = (url, payload, headers = null) => {
+  setConfig()
+  let $http = axios.create(config.axiosConfig)
+
   return new Promise((resolve, reject) => {
     $http.patch(url, payload, headers)
       .then((handleSuccess) => {
@@ -101,6 +107,9 @@ let sendPatch = (url, payload, headers = null) => {
 }
 
 let sendPut = (url, payload, headers = null) => {
+  setConfig()
+  let $http = axios.create(config.axiosConfig)
+
   return new Promise((resolve, reject) => {
     $http.put(url, payload, headers)
       .then((handleSuccess) => {
@@ -114,6 +123,8 @@ let sendPut = (url, payload, headers = null) => {
 
 let sendGet = (url, config = null) => {
   let pageCount = null
+  setConfig()
+  let $http = axios.create(config.axiosConfig)
   return new Promise((resolve, reject) => {
     $http.get(url, config)
       .then((handleSuccess) => {
@@ -140,6 +151,8 @@ let sendGet = (url, config = null) => {
 export default config
 
 export { config }
+
+export { setConfig }
 
 export { sendPost }
 
