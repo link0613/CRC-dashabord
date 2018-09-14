@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import {MutationTypes} from '../../../store/mutation-types';
 import { Component, Prop, Watch } from 'vue-property-decorator'
+import { Getter } from 'vuex-class';
 
 import MultipleFileUploader from '@updivision/vue2-multi-uploader'
 import Datepicker from 'vuejs-datepicker';
@@ -8,6 +9,7 @@ import Datepicker from 'vuejs-datepicker';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faCheck } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
+
 import store from '../../../store';
 
 library.add(faCheck)
@@ -33,6 +35,7 @@ export class FormContainer extends Vue {
   userNameValidated = true;
   password = '';
   passwordValidated = true;
+  
 
   // FILL OUT YOUR CONTACT INFO
   firstName = '';
@@ -51,27 +54,32 @@ export class FormContainer extends Vue {
   birthday = new Date(1980, 1,  1);
   fileUpLoadValidated = false;
 
+  @Getter('loginStorage', {}) loginStorage!: any;
+  @Getter('loggedIn', {}) loggedIn!: any;
 
-  @Watch('loginStorage') loginStorageChanged(value, oldValue) {
-    console.log(this.loginStorage, 'sdlfjskldfjklsjdfklsdflkjksldfjl');
-  }
-  get loginStorage() {
-    return this.$store.state.loginStorage;
-  }
+  // @Watch('loggedIn') loggedInChanged(value, oldValue) {
+  //   this.validateStep(0);
+  // }
 
-  mounted() {
-    console.log('---------------------')
-    this.formValidated[0] = true;
-  }
+
+  // mounted() {
+  //   // this.validateStep(0);
+  // }
 
   //Login
-  login() {
+  userLogin() {
+    
     this.userNameValidated = this.userName !== '';
     this.passwordValidated = this.password !== '';
     if (this.userNameValidated && this.passwordValidated) {
+      console.log('sending request...')
       const loginInfo = {username: this.userName, password: this.password};
       this.$store.dispatch(MutationTypes.LOGIN_USER, loginInfo);
     }
+  }
+
+  userLogout() {
+    this.$store.dispatch(MutationTypes.LOGOUT_USER);
   }
 
   // COMMON 
@@ -102,10 +110,10 @@ export class FormContainer extends Vue {
     // } else {
     //   this.step = 0;
     // }
-    console.log(this.step)
-    console.log(tab, this.formValidated[tab-1])
-    if (!this.formValidated[tab-1]) return;
-    this.step = tab;
+    // console.log(this.step)
+    // console.log(tab, this.formValidated[tab-1])
+    // if (!this.formValidated[tab-1]) return;
+    // this.step = tab;
   }
 
   prevStep() {
@@ -124,12 +132,8 @@ export class FormContainer extends Vue {
   validateStep(tab){
     switch(tab) {
       case 0:
-        const configString = this.$store.state.loginStorage.getItem("awsConfig");
-        const config = JSON.parse(configString);
-        if(config != null) {
-          this.formValidated[tab] = true;
-          return true
-        }
+        this.formValidated[0] = this.loggedIn
+        return this.formValidated[0];
         
         break;
       case 1:

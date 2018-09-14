@@ -73,15 +73,13 @@
             <div class="row">
 
               <div class="wd-wrap">
-                sfljslkdfjslkjflkajslkfjlksfjlkajsfdlkjlkjlkalksdlkslsklalkjflkasjdfsdfkkdskksk
-                {{formValidated[0]}}
-                <div class="wd-form__wrapper" v-if="formValidated[0]">
+                <div class="wd-form__wrapper" v-if="loggedIn">
 
                   <legend class="wd-form__header">You are now logged in.</legend>
 
                   <div class="btn-group navbar-btn sw-btn-group pull-right" role="group">
                     <!-- <button class="btn btn-default sw-btn-next wd-btn-next" type="button" @click="nextStep" :disabled="isDisabledNextBtn()">Next</button> -->
-                    <button class="btn btn-default sw-btn-next wd-btn-next" type="button">Logout</button>
+                    <button class="btn btn-default" type="button" @click="userLogout()"> Logout</button>
                   </div>
 
                 </div>
@@ -101,7 +99,7 @@
 
                     <div class="btn-group navbar-btn sw-btn-group pull-right" role="group">
                       <!-- <button class="btn btn-default sw-btn-next wd-btn-next" type="button" @click="nextStep" :disabled="isDisabledNextBtn()">Next</button> -->
-                      <button class="btn btn-default sw-btn-next wd-btn-next" type="button" @click="login">Login</button>
+                      <a class="btn btn-default" @click="userLogin()">Login</a>
                     </div>
 
 
@@ -174,7 +172,7 @@
                   <div class="wd-form__wrp">
                     <label class=" wd-form__label">Date of Birth<span>*</span></label>
                     <div>
-                      <datepicker v-model="birthday" name="birthday" format="yyyy-MM-dd" :disabled="formValidated[0]"></datepicker>
+                      <datepicker v-model="birthday" name="birthday" format="yyyy-MM-dd" :disabled="formValidated[1]"></datepicker>
                     </div>
                   </div>
 

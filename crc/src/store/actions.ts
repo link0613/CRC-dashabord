@@ -61,6 +61,10 @@ const actions: ActionTree<State, State> = {
     }
   },  
 
+  [MutationTypes.LOGOUT_USER]: ({commit}) => {
+    commit(MutationTypes.LOGOUT_USER);
+  },  
+
   [MutationTypes.SUBMIT_CONTACT_INFO]: ({commit}, contactInfo) => {
     // contactInfo = {"first_name": "Dave", "last_name": "Smith", "company_name": "Wrench.AI Test sssss 1", "phone_number": "888-555-1212", "email": "kevin@wrench.ai", "street_1": "555 Main St.", "street_2": "Apt 2B", "city": "Los Angeles", "state": "CA", "zip": "91203", "year": "1970", "month": "01", "day": "21"};
     sendPost('contact_info', contactInfo, 

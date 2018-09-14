@@ -41,7 +41,8 @@
     "vue-property-decorator": "^6.0.0",
     "vue-router": "^3.0.1",
     "vue-stripe-elements-plus": "^0.2.8",
-    "vuejs-datepicker": "^1.5.3"
+    "vuejs-datepicker": "^1.5.3",
+    "vuex-class": "^0.3.1"
   },
   "devDependencies": {
     "@types/mocha": "^2.2.43",
