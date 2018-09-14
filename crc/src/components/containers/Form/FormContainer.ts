@@ -63,9 +63,9 @@ export class FormContainer extends Vue {
   }
 
 
-  // mounted() {
-  //   // this.validateStep(0);
-  // }
+  mounted() {
+    console.log(this.loginStorage)
+  }
 
   //Login
   userLogin() {

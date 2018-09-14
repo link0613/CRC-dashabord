@@ -36,14 +36,20 @@ let config = {
   }
 }
 
-if (localStorage.getItem('access_token') || sessionStorage.getItem('access_token')) {
-  config.axiosConfig.headers['authorization'] = 'Bearer ' + (localStorage.getItem('access_token') || sessionStorage.getItem('access_token'))
+if (localStorage.getItem('sessionTokens') || sessionStorage.getItem('sessionTokens')) {
+  const tokenInfo = JSON.parse(localStorage.getItem('sessionTokens') || sessionStorage.getItem('sessionTokens'))
+
+  config.axiosConfig.headers['authorization'] = 'Bearer ' +  tokenInfo['IdToken']['jwtToken'];
+  console.log(config.axiosConfig.headers['authorization'] )
 }
 
 let $http = axios.create(config.axiosConfig)
 
-if (localStorage.getItem('access_token') || sessionStorage.getItem('access_token')) {
-  $http.defaults.headers.common['authorization'] = 'Bearer ' + (localStorage.getItem('access_token') || sessionStorage.getItem('access_token'))
+if (localStorage.getItem('sessionTokens') || sessionStorage.getItem('sessionTokens')) {
+  const tokenInfo = JSON.parse(localStorage.getItem('sessionTokens') || sessionStorage.getItem('sessionTokens'))
+
+  config.axiosConfig.headers['authorization'] = 'Bearer ' +  tokenInfo['IdToken']['jwtToken'];
+  console.log(config.axiosConfig.headers['authorization'] )
 }
 
 let sendPostForm = (url, payload, headers = null) => {
