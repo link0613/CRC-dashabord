@@ -9,23 +9,6 @@ declare var localStorage;
 
 
 const actions: ActionTree<State, State> = {
-  [MutationTypes.INCREMENT_VALUE]: ({commit}) => {
-    commit(MutationTypes.INCREMENT_VALUE);
-  },
-  [MutationTypes.DECREMENT_VALUE]: ({commit}) => {
-    commit(MutationTypes.DECREMENT_VALUE);
-  },
-  [MutationTypes.RESET_VALUE]: ({commit}) => {
-    commit(MutationTypes.RESET_VALUE);
-  },
-
-  // [MutationTypes.GET_LIST]: ({commit}) => {
-  //   listAPI.getAllList(items => {
-  //     commit(MutationTypes.GET_LIST, {
-  //       items
-  //     });
-  //   });
-  // },
 
   [MutationTypes.LOGIN_CHANGED]: ({commit}) => {
     commit(MutationTypes.LOGIN_CHANGED);

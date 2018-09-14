@@ -11,9 +11,6 @@ import { AdminContainer } from '../components/containers/Admin';
 // modules
 import { Navbar } from '../components/modules/Navbar';
 
-////for testing
-import { CounterContainer } from '../components/containers/Counter';
-import { ListContainer } from '../components/containers/List';
 
 
 // register the plugin
@@ -40,17 +37,7 @@ const router = new VueRouter({
       path: '/admin',
     }, 
     
-    
-    ////////////////// --------testing------ ////////////
-    {
-      component: CounterContainer,
-      name: 'counter',
-      path: '/counter',
-    }, {
-      component: ListContainer,
-      name: 'list',
-      path: '/list',
-    }
+
   ],
 });
 
