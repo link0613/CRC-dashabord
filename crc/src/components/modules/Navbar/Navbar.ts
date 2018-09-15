@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import { Component, Watch } from 'vue-property-decorator';
-import { Link } from './Link';
+import { Link } from './link';
 import { Logger } from '../../../utils/log';
 import {MutationTypes} from '../../../store/mutation-types';
 @Component({
